@@ -1,0 +1,211 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://webmivotocuenta.appspot.com/_ah/api",
+  "name" : "wsgestioncandidato",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://webmivotocuenta.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "mivotocuenta.org",
+  "ownerName" : "mivotocuenta.org",
+  "packagePath" : "server.ws",
+  "methods" : {
+    "wsgestioncandidato.listCandidato" : {
+      "path" : "candidato",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionCandidato.listCandidato",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestioncandidato.getCandidato" : {
+      "path" : "candidato/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionCandidato.getCandidato",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestioncandidato.insertCandidato" : {
+      "path" : "candidato",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionCandidato.insertCandidato",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestioncandidato.updateCandidato" : {
+      "path" : "candidato",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionCandidato.updateCandidato",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestioncandidato.removeCandidato" : {
+      "path" : "candidato/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionCandidato.removeCandidato",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_Candidato" : {
+        "id" : "CollectionResponse_Candidato",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Candidato"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Candidato" : {
+        "id" : "Candidato",
+        "type" : "object",
+        "properties" : {
+          "idCandidato" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "nombrePartido" : {
+            "type" : "string"
+          },
+          "candidato" : {
+            "type" : "string"
+          },
+          "linkFotoCandidato" : {
+            "type" : "string"
+          },
+          "linkFotoPartido" : {
+            "type" : "string"
+          },
+          "linkPlanGobierno" : {
+            "type" : "string"
+          },
+          "operacion" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "org.mivotocuenta.server.ws.WsGestionCandidato.listCandidato" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Candidato"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionCandidato.getCandidato" : {
+        "response" : {
+          "$ref" : "Candidato"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionCandidato.insertCandidato" : {
+        "request" : {
+          "$ref" : "Candidato"
+        },
+        "response" : {
+          "$ref" : "Candidato"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionCandidato.updateCandidato" : {
+        "request" : {
+          "$ref" : "Candidato"
+        },
+        "response" : {
+          "$ref" : "Candidato"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionCandidato.removeCandidato" : {
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+serviceClass: org.mivotocuenta.client.GreetingService
+path: 637F13DF4E8740DB8E3ACF8B271D4C4D.gwt.rpc

@@ -1,0 +1,205 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://webmivotocuenta.appspot.com/_ah/api",
+  "name" : "wsgestionusuario",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://webmivotocuenta.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "mivotocuenta.org",
+  "ownerName" : "mivotocuenta.org",
+  "packagePath" : "server.ws",
+  "methods" : {
+    "wsgestionusuario.insertUsuario" : {
+      "path" : "usuario",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionUsuario.insertUsuario",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestionusuario.removeUsuario" : {
+      "path" : "usuario/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionUsuario.removeUsuario",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "wsgestionusuario.getUsuario" : {
+      "path" : "usuario/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionUsuario.getUsuario",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestionusuario.updateUsuario" : {
+      "path" : "usuario",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionUsuario.updateUsuario",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestionusuario.listUsuario" : {
+      "path" : "usuario",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionUsuario.listUsuario",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Usuario" : {
+        "id" : "Usuario",
+        "type" : "object",
+        "properties" : {
+          "idUsuario" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "correo" : {
+            "type" : "string"
+          },
+          "nombres" : {
+            "type" : "string"
+          },
+          "apellidos" : {
+            "type" : "string"
+          },
+          "operacion" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      },
+      "CollectionResponse_Usuario" : {
+        "id" : "CollectionResponse_Usuario",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Usuario"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "org.mivotocuenta.server.ws.WsGestionUsuario.insertUsuario" : {
+        "request" : {
+          "$ref" : "Usuario"
+        },
+        "response" : {
+          "$ref" : "Usuario"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionUsuario.removeUsuario" : {
+      },
+      "org.mivotocuenta.server.ws.WsGestionUsuario.getUsuario" : {
+        "response" : {
+          "$ref" : "Usuario"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionUsuario.updateUsuario" : {
+        "request" : {
+          "$ref" : "Usuario"
+        },
+        "response" : {
+          "$ref" : "Usuario"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionUsuario.listUsuario" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Usuario"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://webmivotocuenta.appspot.com/_ah/api",
+  "name" : "wsgestionconteo",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://webmivotocuenta.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "mivotocuenta.org",
+  "ownerName" : "mivotocuenta.org",
+  "packagePath" : "server.ws",
+  "methods" : {
+    "wsgestionconteo.listConteo" : {
+      "path" : "conteo",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionConteo.listConteo",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestionconteo.getConteo" : {
+      "path" : "conteo/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionConteo.getConteo",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestionconteo.insertConteo" : {
+      "path" : "conteo",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionConteo.insertConteo",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestionconteo.updateConteo" : {
+      "path" : "conteo",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionConteo.updateConteo",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "wsgestionconteo.removeConteo" : {
+      "path" : "conteo/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.mivotocuenta.server.ws.WsGestionConteo.removeConteo",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_Conteo" : {
+        "id" : "CollectionResponse_Conteo",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Conteo"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Conteo" : {
+        "id" : "Conteo",
+        "type" : "object",
+        "properties" : {
+          "idConteo" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "idCandidato" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "idUsuario" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "fechaRegistro" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "opinion" : {
+            "type" : "string"
+          },
+          "operacion" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "org.mivotocuenta.server.ws.WsGestionConteo.listConteo" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Conteo"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionConteo.getConteo" : {
+        "response" : {
+          "$ref" : "Conteo"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionConteo.insertConteo" : {
+        "request" : {
+          "$ref" : "Conteo"
+        },
+        "response" : {
+          "$ref" : "Conteo"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionConteo.updateConteo" : {
+        "request" : {
+          "$ref" : "Conteo"
+        },
+        "response" : {
+          "$ref" : "Conteo"
+        }
+      },
+      "org.mivotocuenta.server.ws.WsGestionConteo.removeConteo" : {
+      }
+    }
+  }
+}
